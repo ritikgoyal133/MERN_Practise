@@ -4,6 +4,7 @@ import productRoutes from "./routes/product.js";
 import userRoutes from "./routes/product.js";
 import connectDB from "./config/db.js";
 import cors from "cors";
+import jwt from 'jsonwebtoken';
 
 const app = express();
 
@@ -14,6 +15,9 @@ app.use(cors()); //Enabling API to be accessible from different origins
 
 // Connect to Database
 connectDB();
+
+// Set EJS as the view engine
+app.set("view engine", "ejs");
 
 // Use routes
 app.use("/products", productRoutes);

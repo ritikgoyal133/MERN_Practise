@@ -1,10 +1,13 @@
 import Product  from "../models/product.js";
+import ejs from "ejs";
 
 // Read
 export const getAllProducts = async (req, res) => {
   try {
     const findProduct = await Product.find();
-    res.status(200).json({ message: "Products fetched!", products: findProduct });
+    // Render the EJS view and pass the products to it
+    res.render("product", { products: findProduct });
+    // res.status(200).json({ message: "Products fetched!", products: findProduct });
   } catch (err) {
     res.status(500).json({ message: "Error while fetching products", error: err.message });
   }
